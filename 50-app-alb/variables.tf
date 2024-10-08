@@ -15,12 +15,12 @@ variable "common_tags" {
   }
 }
 
-variable "rds_tags" {
-  default = {
-    component = "mysql"
-  }
-}
-
 variable "zone_name" {
   default = "hemanthkumar.online"
+}
+
+variable "app_alb_tags" {
+  default = {
+    component = "app-alb"
+  }
 }

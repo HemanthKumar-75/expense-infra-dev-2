@@ -67,3 +67,10 @@ variable "ansible_sg_tags" {
     description = "for connection to other servers"
   }
 }
+
+variable "app_alb_sg_tags" {
+  default = {
+    component = "app ALB"
+    description = "for connection to other servers"
+  }
+}

@@ -73,3 +73,32 @@ module "db" {
     },
   ]
 }
+
+module "records" {
+  source  = "terraform-aws-modules/route53/aws//modules/records"
+  # version = "~> 3.0"
+
+  zone_name = var.zone_name
+
+  records = [
+    # {
+    #   name    = "apigateway1"
+    #   type    = "A"
+    #   alias   = {
+    #     name    = "d-10qxlbvagl.execute-api.eu-west-1.amazonaws.com"
+    #     zone_id = "ZLY8HYME6SFAD"
+    #   }
+    # },
+    {
+      name    = "${var.rds_tags}-${var.envinronment}"
+      type    = "CNAME"
+      ttl     = 1
+      allow_overwrite = true
+      records = [
+        module.db.db_instance_address
+      ]
+    }
+  ]
+
+  # depends_on = [module.zones]
+}
