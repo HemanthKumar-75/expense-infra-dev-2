@@ -90,7 +90,7 @@ module "records" {
     #   }
     # },
     {
-      name    = "${var.rds_tags}-${var.envinronment}"
+      name    = "mysql-${var.envinronment}"
       type    = "CNAME"
       ttl     = 1
       allow_overwrite = true
