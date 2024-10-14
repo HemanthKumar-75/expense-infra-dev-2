@@ -30,7 +30,7 @@ resource "null_resource" "backend" {
     host     = module.backend.private_ip
     type     = "ssh"
     user     = "ec2-user"
-    password = "Devops321"
+    password = "DevOps321"
   }
 
   provisioner "file" {
@@ -57,6 +57,12 @@ resource "aws_ami_from_instance" "backend" {
   name               = local.resource_name
   source_instance_id = module.backend.id
   depends_on = [ aws_ec2_instance_state.backend ]
+  tags = merge(
+    var.common_tags,var.backend_tags,
+    {
+      Name = local.resource_name
+    }
+  )
 }
 
 resource "null_resource" "backend_delete" {
@@ -71,4 +77,6 @@ resource "null_resource" "backend_delete" {
   provisioner "local-exec" {
     command = "aws ec2 terminate-instances --instance-ids ${module.backend.id}"
   }
+
+  depends_on = [ aws_ami_from_instance.backend ]
 }

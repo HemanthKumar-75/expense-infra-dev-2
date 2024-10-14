@@ -2,8 +2,12 @@ data "aws_ssm_parameter" "vpn_sg_id" {
   name = "/${var.project}/${var.envinronment}/vpn_sg_id"
 }
 
-data "aws_ssm_parameter" "public_subnet_ids" {
-  name = "/${var.project}/${var.envinronment}/public_subnet_ids"
+data "aws_ssm_parameter" "private_subnet_ids" {
+  name = "/${var.project}/${var.envinronment}/private_subnet_ids"
+}
+
+data "aws_ssm_parameter" "backend_sg_id" {
+  name = "/${var.project}/${var.envinronment}/backend_sg_id"
 }
 
 data "aws_ami" "ec2_id" {
