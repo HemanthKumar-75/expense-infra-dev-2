@@ -74,3 +74,10 @@ variable "app_alb_sg_tags" {
     description = "for connection to other servers"
   }
 }
+
+variable "web_alb_sg_tags" {
+  default = {
+    component = "WEB ALB"
+    description = "for connection to others"
+  }
+}

@@ -15,12 +15,10 @@ variable "common_tags" {
   }
 }
 
-variable "backend_tags" {
-  default = {
-    component = "backend"
-  }
-}
-
 variable "zone_name" {
   default = "hemanthkumar.online"
+}
+
+variable "zone_id" {
+  default = "Z05267743DLV8AUL24HBJ"
 }

@@ -14,6 +14,10 @@ data "aws_ssm_parameter" "backend_sg_id" {
   name = "/${var.project}/${var.envinronment}/backend_sg_id"
 }
 
+data "aws_ssm_parameter" "app_alb_listener_arn" {
+  name = "/${var.project}/${var.envinronment}/app_alb_listener_arn"
+}
+
 data "aws_ami" "ec2_id" {
 
     most_recent = true
